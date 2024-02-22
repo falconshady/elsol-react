@@ -3,7 +3,7 @@ import {Table} from 'flowbite-react';
 import {Link} from "gatsby";
 import TableEmptyData from "../commons/TableEmptyData";
 
-const TableComponent = ({productList}) => {
+const TableComponent = ({productList, deleteProduct}) => {
     return (
         <div className="overflow-x-auto">
             <Table>
@@ -25,6 +25,7 @@ const TableComponent = ({productList}) => {
                                     <Table.Cell>{product.type}</Table.Cell>
                                     <Table.Cell>
                                         <Link to={`/product/edit/${product.id}`}>Edit</Link>
+                                        <button onClick={() => deleteProduct(product)} className="ml-5">Delete</button>
                                     </Table.Cell>
                                 </Table.Row>
                             )

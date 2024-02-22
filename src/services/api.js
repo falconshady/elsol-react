@@ -29,3 +29,12 @@ export const UpdateProduct = async (id, values) => {
     })
     return await response.json();
 }
+
+export const DeleteProduct = async (id, values) => {
+    const response = await fetch(`${process.env.API_URL}/product/${id}`, {
+        method: 'DELETE',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(values)
+    })
+    return await response.json();
+}
