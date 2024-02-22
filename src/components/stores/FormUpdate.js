@@ -15,6 +15,8 @@ const validationSchema = Yup.object().shape({
 
 const FormUpdateComponent = ({id}) => {
 
+    const [apiErrors, setApiErrors] = useState(null);
+    
     const [enableEdit, setEnableEdit] = useState(false);
 
     const [data, setData] = useState({
@@ -113,6 +115,7 @@ const FormUpdateComponent = ({id}) => {
                                             </>
                                         )
                                 }
+                                {apiErrors ? <div className="text-red-400">{apiErrors}</div>: ''}
                             </Form>
                         )
                     }

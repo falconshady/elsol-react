@@ -13,6 +13,8 @@ const validationSchema = Yup.object().shape({
 
 const FormCreateComponent = () => {
 
+    const [apiErrors, setApiErrors] = useState(null);
+    
     const [data, setData] = useState({
         name: '',
         price: '',
@@ -24,6 +26,8 @@ const FormCreateComponent = () => {
         if(created.success){
             alert('Create successfully')
             navigate('/')
+        }else{
+            setApiErrors(created.message)
         }
     }
 
@@ -67,6 +71,7 @@ const FormCreateComponent = () => {
                                 <button type="submit" className="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
                                     Add product
                                 </button>
+                                {apiErrors ? <div className="text-red-400">{apiErrors}</div>: ''}
                             </Form>
                         )
                     }
