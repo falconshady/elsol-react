@@ -22,6 +22,7 @@ const CreateFormComponent = () => {
     const createProduct = async (values) => {
         const created = await CreateProduct(values)
         if(created.success){
+            alert('Create successfully')
             navigate('/')
         }
     }

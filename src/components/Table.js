@@ -1,5 +1,6 @@
 import React from "react"
 import {Table} from 'flowbite-react';
+import {Link} from "gatsby";
 
 const TableComponent = ({productList}) => {
     return (
@@ -22,10 +23,7 @@ const TableComponent = ({productList}) => {
                                     <Table.Cell>{product.price}</Table.Cell>
                                     <Table.Cell>{product.type}</Table.Cell>
                                     <Table.Cell>
-                                        <a href="#"
-                                           className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
-                                            Edit
-                                        </a>
+                                        <Link to={`/product/edit/${product.id}`}>Edit</Link>
                                     </Table.Cell>
                                 </Table.Row>
                             )
