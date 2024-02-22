@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import * as Yup from 'yup';
 import {Formik, Form} from 'formik';
 import {inputField} from "../../Util/CommonStyles";
-import {CreateProduct} from "../../services/api";
+import {CreateProduct} from "../../services/ApiProductServices";
 import {navigate} from "gatsby";
 
 const validationSchema = Yup.object().shape({

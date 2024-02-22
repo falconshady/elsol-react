@@ -12,6 +12,9 @@ const NavbarComponent = () => {
                 <Navbar.Link href="/" active>
                     Products
                 </Navbar.Link>
+                <Navbar.Link href="/" active>
+                    Stores
+                </Navbar.Link>
             </Navbar.Collapse>
         </Navbar>
     );
