@@ -7,7 +7,9 @@ import {navigate} from "gatsby";
 
 const validationSchema = Yup.object().shape({
     name: Yup.string().required("Este campo es requerido"),
-    city: Yup.string().required("Este campo es requerido"),
+    city: Yup.string().required("Este campo es requerido")
+        .min(3, 'La ciudad debe tener solo 3 caracteres')
+        .max(3, 'La ciudad debe tener solo 3 caracteres'),
     address: Yup.string().required("Este campo es requerido"),
 });
 
