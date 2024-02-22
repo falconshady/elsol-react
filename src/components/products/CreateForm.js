@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import * as Yup from 'yup';
-import {Formik, Field, Form} from 'formik';
+import {Formik, Form} from 'formik';
 import {inputField} from "../../Util/CommonStyles";
 import {CreateProduct} from "../../services/api";
 import {navigate} from "gatsby";
