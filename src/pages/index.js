@@ -23,7 +23,7 @@ const IndexPage = () => {
             <NavbarComponent />
             <Tabs aria-label="Tabs with underline" style="underline">
                 <Tabs.Item active title="List Products">
-                    <TableComponent />
+                    <TableComponent productList={products} />
                 </Tabs.Item>
             </Tabs>
         </div>
