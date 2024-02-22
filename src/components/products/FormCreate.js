@@ -7,8 +7,8 @@ import {navigate} from "gatsby";
 
 const validationSchema = Yup.object().shape({
     name: Yup.string().required("Este campo es requerido"),
-    price: Yup.string().required("Este campo es requerido"),
-    type: Yup.string().required("Este campo es requerido"),
+    price: Yup.number('Este campo debe ser un número').required("Este campo es requerido"),
+    type: Yup.mixed().oneOf(['PERECEDERO', 'NO_PERECEDERO']).required("Este campo es requerido"),
 });
 
 const FormCreateComponent = () => {
