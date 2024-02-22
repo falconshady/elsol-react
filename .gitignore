@@ -44,3 +44,6 @@ Thumbs.db
 .cache
 public
 .env.development
+
+# Contentlayer
+.contentlayer
