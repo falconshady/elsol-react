@@ -1,6 +1,7 @@
 import React from "react"
 import {Table} from 'flowbite-react';
 import {Link} from "gatsby";
+import TableEmptyData from "../commons/TableEmptyData";
 
 const TableComponent = ({productList}) => {
     return (
@@ -16,7 +17,7 @@ const TableComponent = ({productList}) => {
                 </Table.Head>
                 <Table.Body className="divide-y">
                     {
-                        productList.map(
+                        (productList.length === 0) ? (<TableEmptyData />) : productList.map(
                             (product, index) => (
                                 <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800" key={index}>
                                     <Table.Cell>{product.name}</Table.Cell>

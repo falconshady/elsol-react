@@ -11,7 +11,7 @@ const validationSchema = Yup.object().shape({
     type: Yup.string().required("Este campo es requerido"),
 });
 
-const CreateFormComponent = () => {
+const FormCreateComponent = () => {
 
     const [data, setData] = useState({
         name: '',
@@ -75,4 +75,4 @@ const CreateFormComponent = () => {
         </section>
     )
 }
-export default CreateFormComponent
+export default FormCreateComponent

@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react"
 import {GetProducts} from "../services/api";
-import TableComponent from "../components/Table";
-import NavbarComponent from "../components/Navbar";
 import {Tabs, Button} from "flowbite-react";
 import {navigate} from "gatsby";
+import NavbarComponent from "../components/commons/Navbar";
+import TableProducts from "../components/products/TableProducts";
 const IndexPage = () => {
     const [products, setProducts] = useState([]);
     const getProducts = async () => {
@@ -21,15 +21,14 @@ const IndexPage = () => {
         <div className="w-full">
             <NavbarComponent />
             <Tabs aria-label="Tabs with underline" style="underline">
-                <Tabs.Item active title="List Products">
+                <Tabs.Item active title="Products">
                     <div className="flex justify-end px-5 pb-5">
                         <Button onClick={() => {navigate('/product/create')}}>+ Add</Button>
                     </div>
-                    <TableComponent productList={products}/>
+                    <TableProducts productList={products}/>
                 </Tabs.Item>
             </Tabs>
         </div>
     )
 }
-
 export default IndexPage

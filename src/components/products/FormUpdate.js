@@ -11,7 +11,7 @@ const validationSchema = Yup.object().shape({
     type: Yup.string().required("Este campo es requerido"),
 });
 
-const UpdateFormComponent = ({id}) => {
+const FormUpdateComponent = ({id}) => {
 
     const [enableEdit, setEnableEdit] = useState(false);
 
@@ -119,4 +119,4 @@ const UpdateFormComponent = ({id}) => {
         </section>
     )
 }
-export default UpdateFormComponent
+export default FormUpdateComponent

@@ -1,15 +1,14 @@
 import React from "react"
-import NavbarComponent from "../../components/Navbar";
 import {Tabs} from "flowbite-react";
-import CreateFormComponent from "../../components/products/CreateForm";
-
+import NavbarComponent from "../../components/commons/Navbar";
+import FormCreateComponent from "../../components/products/FormCreate";
 const ProductCreatePage = () => {
     return (
         <div className="w-full">
-            <NavbarComponent/>
+            <NavbarComponent />
             <Tabs aria-label="Tabs with underline" style="underline">
                 <Tabs.Item active title="Create">
-                    <CreateFormComponent />
+                    <FormCreateComponent />
                 </Tabs.Item>
             </Tabs>
         </div>
