@@ -2,9 +2,8 @@ import React, {useEffect, useState} from "react"
 import {GetProducts} from "../services/api";
 import TableComponent from "../components/Table";
 import NavbarComponent from "../components/Navbar";
-import {Tabs} from "flowbite-react";
-import {HiAdjustments, HiClipboardList, HiUserCircle} from "react-icons/hi";
-import {MdDashboard} from "react-icons/md";
+import {Tabs, Button} from "flowbite-react";
+import {navigate} from "gatsby";
 const IndexPage = () => {
     const [products, setProducts] = useState([]);
     const getProducts = async () => {
@@ -23,7 +22,10 @@ const IndexPage = () => {
             <NavbarComponent />
             <Tabs aria-label="Tabs with underline" style="underline">
                 <Tabs.Item active title="List Products">
-                    <TableComponent productList={products} />
+                    <div className="flex justify-end px-5 pb-5">
+                        <Button onClick={() => {navigate('/product/create')}}>+ Add</Button>
+                    </div>
+                    <TableComponent productList={products}/>
                 </Tabs.Item>
             </Tabs>
         </div>
