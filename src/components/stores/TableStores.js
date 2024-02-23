@@ -24,8 +24,8 @@ const TableComponent = ({storeList, deleteStore, getStoreProducts}) => {
                                     <Table.Cell>{store.city}</Table.Cell>
                                     <Table.Cell>{store.address}</Table.Cell>
                                     <Table.Cell>
-                                        <Link to={`/store/edit/${store.id}`}>Edit</Link>
-                                        <button onClick={() => deleteStore(store)} className="ml-5">Delete</button>
+                                        <Link to={`/store/edit/${store.id}`} className="inline-block">Edit</Link>
+                                        <button onClick={() => deleteStore(store)} className="inline-block">Delete</button>
                                     </Table.Cell>
                                     <Table.Cell>
                                         <button onClick={() => getStoreProducts(store.id)} className="inline-block">Check products</button>

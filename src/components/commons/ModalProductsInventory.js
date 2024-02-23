@@ -20,7 +20,7 @@ const ModalAssignProduct = ({list, openModal, setOpenModal}) => {
                 </div>
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={() => setOpenModal(false)}>Understand</Button>
+                <Button onClick={() => setOpenModal(false)}>OK</Button>
             </Modal.Footer>
         </Modal>
     )
