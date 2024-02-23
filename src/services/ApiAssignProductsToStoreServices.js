@@ -1,5 +1,5 @@
 export const AssignProductToStore = async (productId, storeId) => {
-    const response = await fetch(`${process.env.API_URL}/association/products/${productId}/stores/${storeId}`, {
+    const response = await fetch(`${process.env.GATSBY_API_URL}/association/products/${productId}/stores/${storeId}`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
     })
