@@ -1,21 +1,31 @@
 import React, {useEffect, useState} from "react"
-import {DeleteProduct, GetProducts} from "../services/ApiProductServices";
+import {DeleteProduct, GetProducts, GetProductsInStores} from "../services/ApiProductServices";
 import {Tabs, Button} from "flowbite-react";
 import {navigate} from "gatsby";
 import NavbarComponent from "../components/commons/Navbar";
 import TableProducts from "../components/products/TableProducts";
 import TableStores from "../components/stores/TableStores";
-import {DeleteStore, GetStores} from "../services/ApiStoreServices";
+import {DeleteStore, GetStoreProducts, GetStores} from "../services/ApiStoreServices";
 import {AssignProductToStore} from "../services/ApiAssignProductsToStoreServices";
 import ModalAssignProduct from "../components/commons/ModalAssignProduct";
+import ModalProductsInventory from "../components/commons/ModalProductsInventory";
+import ModalStoresInventory from "../components/commons/ModalStoresInventory";
 
 const IndexPage = () => {
     const [products, setProducts] = useState([]);
-    const [productAssignResult, setProductAssignResult] = useState([]);
     const [stores, setStores] = useState([]);
     const [showAssociateProduct, setShowAssociateProduct] = useState(false);
     const [selectedStore, setSelectedStore] = useState('');
+    
     const [modalAssignResult, setModalAssignResult] = useState(false);
+    const [productAssignResult, setProductAssignResult] = useState([]);
+    
+    const [modalProductsInventory, setModalProductsInventory] = useState(false);
+    const [productsInventory, setProductsInventory] = useState([]);
+    
+    const [modalStoresInventory, setModalStoresInventory] = useState(false);
+    const [storesInventory, setStoresInventory] = useState([]);
+    
     const getProducts = async () => {
         const request = await GetProducts()
         if (request.success) {
@@ -70,6 +80,22 @@ const IndexPage = () => {
         }
     }
     
+    const getProductsInStores = async (id) => {
+        const request = await GetProductsInStores(id)
+        if (request.success) {
+            setProductsInventory(request.response.stores)
+            setModalProductsInventory(true)
+        }
+    }
+
+    const getStoreProducts = async (id) => {
+        const request = await GetStoreProducts(id)
+        if (request.success) {
+            setStoresInventory(request.response.products)
+            setModalStoresInventory(true)
+        }
+    }
+    
     const assignProductsToStore = () => {
         if(!selectedStore){
             alert('Need selected store')
@@ -108,7 +134,7 @@ const IndexPage = () => {
     return (
         <div className="w-full">
             <NavbarComponent/>
-            <Tabs aria-label="Tabs with underline" style="underline">
+            <Tabs aria-label="Tabs with underline">
                 <Tabs.Item active title="Products">
                     <div className="flex justify-between">
                         <div className="px-5 pb-5">
@@ -139,6 +165,7 @@ const IndexPage = () => {
                         deleteProduct={deleteProduct}
                         selectAllProducts={selectAllProducts}
                         setShowAssociateProduct={setShowAssociateProduct}
+                        getProductsInStores={getProductsInStores}
                     />
                 </Tabs.Item>
                 <Tabs.Item active title="Stores">
@@ -147,10 +174,21 @@ const IndexPage = () => {
                             navigate('/store/create')
                         }}>+ Add store</Button>
                     </div>
-                    <TableStores storeList={stores} deleteStore={deleteStore}/>
+                    <TableStores storeList={stores} deleteStore={deleteStore} getStoreProducts={getStoreProducts}/>
                 </Tabs.Item>
             </Tabs>
-            <ModalAssignProduct products={productAssignResult} openModal={modalAssignResult} setOpenModal={setModalAssignResult} />
+
+            <ModalAssignProduct list={productAssignResult} openModal={modalAssignResult} setOpenModal={setModalAssignResult} />
+            <ModalProductsInventory 
+                list={productsInventory}
+                openModal={modalProductsInventory}
+                setOpenModal={setModalProductsInventory}
+            />
+            <ModalStoresInventory
+                list={storesInventory}
+                openModal={modalStoresInventory}
+                setOpenModal={setModalStoresInventory}
+            />
         </div>
     )
 }

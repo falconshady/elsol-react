@@ -1,9 +1,9 @@
-import React, {useState} from "react"
+import React from "react"
 import {Table} from 'flowbite-react';
 import {Link} from "gatsby";
 import TableEmptyData from "../commons/TableEmptyData";
 
-const TableComponent = ({productList, deleteProduct, selectAllProducts, setShowAssociateProduct}) => {
+const TableComponent = ({productList, deleteProduct, selectAllProducts, setShowAssociateProduct, getProductsInStores}) => {
     return (
         <div className="overflow-x-auto">
             <Table>
@@ -14,9 +14,8 @@ const TableComponent = ({productList, deleteProduct, selectAllProducts, setShowA
                     <Table.HeadCell>Product name</Table.HeadCell>
                     <Table.HeadCell>Price</Table.HeadCell>
                     <Table.HeadCell>Type</Table.HeadCell>
-                    <Table.HeadCell>
-                        <span className="sr-only">Actions</span>
-                    </Table.HeadCell>
+                    <Table.HeadCell>Actions</Table.HeadCell>
+                    <Table.HeadCell>Inventory</Table.HeadCell>
                 </Table.Head>
                 <Table.Body className="divide-y">
                     {
@@ -39,9 +38,11 @@ const TableComponent = ({productList, deleteProduct, selectAllProducts, setShowA
                                         <Table.Cell>{product.price}</Table.Cell>
                                         <Table.Cell>{product.type}</Table.Cell>
                                         <Table.Cell>
-                                            <Link to={`/product/edit/${product.id}`}>Edit</Link>
-                                            <button onClick={() => deleteProduct(product)} className="ml-5">Delete
-                                            </button>
+                                            <Link to={`/product/edit/${product.id}`} className="inline-block">Edit</Link>
+                                            <button onClick={() => deleteProduct(product)} className="inline-block">Delete</button>
+                                        </Table.Cell>
+                                        <Table.Cell>
+                                            <button onClick={() => getProductsInStores(product.id)} className="inline-block">Check stores</button>
                                         </Table.Cell>
                                     </Table.Row>
                                 )

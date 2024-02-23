@@ -38,3 +38,10 @@ export const DeleteProduct = async (id, values) => {
     })
     return await response.json();
 }
+
+export const GetProductsInStores = async (id) => {
+    const response = await fetch(`${process.env.API_URL}/find/product/${id}/stores`, {
+        headers: {'Accept': 'application/json'}
+    })
+    return await response.json();
+}

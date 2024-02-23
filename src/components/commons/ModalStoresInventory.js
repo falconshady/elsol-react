@@ -1,5 +1,5 @@
 import React from "react";
-import {Badge, Button, Modal} from "flowbite-react";
+import {Button, Modal} from "flowbite-react";
 
 const ModalAssignProduct = ({list, openModal, setOpenModal}) => {
     return (
@@ -9,11 +9,10 @@ const ModalAssignProduct = ({list, openModal, setOpenModal}) => {
                 <div className="space-y-6">
                     <ul>
                         {
-                            list.map((product, index) => (
+                            (list.length === 0) ? (<div>No Data</div>) :
+                            list.map((item, index) => (
                                 <li key={index} className="pb-3">
-                                    Product: {product.product} {(product.status
-                                        ? <Badge color="success" size="sm">Success: Successfully assigned</Badge>
-                                        : <Badge color="failure" size="sm">Failure: Product was previously added</Badge>)}
+                                    Store has <span className="bg-green-400 text-white p-1">{item.name}</span>
                                 </li>
                             ))
                         }

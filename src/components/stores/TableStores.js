@@ -3,7 +3,7 @@ import {Table} from 'flowbite-react';
 import {Link} from "gatsby";
 import TableEmptyData from "../commons/TableEmptyData";
 
-const TableComponent = ({storeList, deleteStore}) => {
+const TableComponent = ({storeList, deleteStore, getStoreProducts}) => {
     return (
         <div className="overflow-x-auto">
             <Table>
@@ -11,9 +11,8 @@ const TableComponent = ({storeList, deleteStore}) => {
                     <Table.HeadCell>Name</Table.HeadCell>
                     <Table.HeadCell>City</Table.HeadCell>
                     <Table.HeadCell>Address</Table.HeadCell>
-                    <Table.HeadCell>
-                        <span className="sr-only">Actions</span>
-                    </Table.HeadCell>
+                    <Table.HeadCell>Actions</Table.HeadCell>
+                    <Table.HeadCell>Inventory</Table.HeadCell>
                 </Table.Head>
                 <Table.Body className="divide-y">
                     {
@@ -27,6 +26,9 @@ const TableComponent = ({storeList, deleteStore}) => {
                                     <Table.Cell>
                                         <Link to={`/store/edit/${store.id}`}>Edit</Link>
                                         <button onClick={() => deleteStore(store)} className="ml-5">Delete</button>
+                                    </Table.Cell>
+                                    <Table.Cell>
+                                        <button onClick={() => getStoreProducts(store.id)} className="inline-block">Check products</button>
                                     </Table.Cell>
                                 </Table.Row>
                             )
